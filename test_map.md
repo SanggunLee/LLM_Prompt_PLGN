@@ -18,10 +18,23 @@
      // 아래는 위젯 블루프린트를 만들기 위한 가이드입니다.  
      /*  
      위젯 블루프린트 생성 가이드:  
-     1. 콘텐츠 브라우저에서 LLMDialoguePlugin/UI 폴더에 우클릭합니다.  
-     2. User Interface > Widget Blueprint를 선택합니다.  
-     3. 이름을 "WBP_DialogueUI"로 지정합니다.  
-     … +26 lines (ctrl+r to expand)  
+```  
+  1. Content Browser의 LLMDialoguePlugin/UI 폴더에서 우클릭
+  2. User Interface > Widget Blueprint 선택
+  3. "WBP_DialogueUI" 이름으로 생성
+
+  위젯 설계:
+  - Canvas Panel 추가 후 Size Box(800x200) 위에 배치
+  - Background(Image), Vertical Box 추가
+  - Text Block 두개 추가: NPCNameText(NPC 이름), DialogueText(대화 내용)
+  - Horizontal Box로 InputContainer 생성: Edit Text Box와 Send Button 배치
+
+  그래프 이벤트:
+  - SendButton 클릭 이벤트: 텍스트 가져와 OnMessageSent 호출, 입력창 초기화
+  - UpdateDialogueText 함수: 대화 텍스트 업데이트
+  - SetNPCName 함수: NPC 이름 설정
+  - OnMessageSent 커스텀 이벤트: 외부 바인딩용
+```  
 
 ● 이제 NPC 블루프린트 스크립트를 만들겠습니다:  
 
