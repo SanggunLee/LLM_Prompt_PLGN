@@ -7,9 +7,9 @@
   2. 블루프린트 위젯 생성 단계:  
     - 각 C++ 위젯 클래스를 상속받는 블루프린트 위젯을 생성합니다.  
     - ULLMDialogueMessageWidget을 상속받는 BP_LLMDialogueMessageWidget 생성  
-    - ULLMDialogueInputWidget을 상속받는 BP_LLMDialogueInputWidget 생성 
+    - ULLMDialogueInputWidget을 상속받는 BP_LLMDialogueInputWidget 생성  
     - ULLMDialogueWidget을 상속받는 BP_LLMDialogueWidget 생성  
-    - 각 위젯의 디자인을 블루프린트 에디터에서 구성합니다. 
+    - 각 위젯의 디자인을 블루프린트 에디터에서 구성합니다.  
   3. 게임에서 사용하는 방법:
 ```
   // C++ 코드에서  
