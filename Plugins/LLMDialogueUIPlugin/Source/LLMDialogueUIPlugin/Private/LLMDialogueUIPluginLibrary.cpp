@@ -23,7 +23,7 @@ ULLMDialogueWidget* ULLMDialogueUIPluginLibrary::CreateDialogueUI(const UObject*
     ULLMDialogueWidget* DialogueWidget = CreateWidget<ULLMDialogueWidget>(PlayerController, WidgetClass);
     if (DialogueWidget)
     {
-        DialogueWidget->Initialize(DialogueComponent);
+        DialogueWidget->InitializeDialogue(DialogueComponent);
         
         // NPC 이름 설정 (대화 컴포넌트의 소유자 이름이나 태그 사용)
         AActor* OwnerActor = DialogueComponent->GetOwner();

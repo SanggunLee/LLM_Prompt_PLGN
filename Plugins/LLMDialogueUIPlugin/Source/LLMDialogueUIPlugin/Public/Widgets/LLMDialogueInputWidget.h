@@ -4,10 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/EditableTextBox.h"
+#include "Components/Button.h"
 #include "LLMDialogueInputWidget.generated.h"
-
-class UEditableTextBox;
-class UButton;
 
 /** Delegate for when a message is sent */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMessageSent, const FString&, Message);

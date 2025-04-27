@@ -47,7 +47,7 @@ void ULLMDialogueWidget::NativeDestruct()
     Super::NativeDestruct();
 }
 
-void ULLMDialogueWidget::Initialize(ULLMDialogueComponent* InDialogueComponent)
+void ULLMDialogueWidget::InitializeDialogue(ULLMDialogueComponent* InDialogueComponent)
 {
     // 이전 연결 해제
     if (DialogueComponent)

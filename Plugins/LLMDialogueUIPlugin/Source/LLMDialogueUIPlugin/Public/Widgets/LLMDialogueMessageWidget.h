@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Border.h"
+#include "Components/TextBlock.h"
+#include "Components/RichTextBlock.h"
 #include "LLMDialogueMessageWidget.generated.h"
-
-class UTextBlock;
-class URichTextBlock;
 
 /**
  * Widget for displaying a single message in the dialogue conversation
@@ -41,7 +41,7 @@ protected:
 
     /** Background for the message */
     UPROPERTY(meta = (BindWidget))
-    UWidget* MessageBackground;
+    UBorder* MessageBackground;
 
     /** Whether this message is from an NPC */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LLM Dialogue UI")

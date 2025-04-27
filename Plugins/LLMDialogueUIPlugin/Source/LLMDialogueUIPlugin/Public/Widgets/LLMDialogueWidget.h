@@ -4,14 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Border.h"
+#include "Components/ScrollBox.h"
+#include "Components/TextBlock.h"
 #include "LLMDialogueComponent.h" // LLMDialoguePlugin의 컴포넌트 의존성
 #include "LLMDialogueWidget.generated.h"
 
 class ULLMDialogueMessageWidget;
 class ULLMDialogueInputWidget;
-class UScrollBox;
-class UTextBlock;
-class UBorder;
 
 /**
  * Main dialogue widget for LLM-powered NPC conversations
@@ -29,7 +29,7 @@ public:
 
     /** Initialize the dialogue widget with a dialogue component */
     UFUNCTION(BlueprintCallable, Category = "LLM Dialogue UI")
-    void Initialize(ULLMDialogueComponent* InDialogueComponent);
+    void InitializeDialogue(ULLMDialogueComponent* InDialogueComponent);
 
     /** Set the NPC name displayed in the dialogue */
     UFUNCTION(BlueprintCallable, Category = "LLM Dialogue UI")

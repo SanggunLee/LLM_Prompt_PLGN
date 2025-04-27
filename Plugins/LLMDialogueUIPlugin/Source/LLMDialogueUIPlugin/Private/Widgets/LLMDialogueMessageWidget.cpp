@@ -3,6 +3,7 @@
 #include "Widgets/LLMDialogueMessageWidget.h"
 #include "Components/TextBlock.h"
 #include "Components/RichTextBlock.h"
+#include "Components/Border.h"
 
 ULLMDialogueMessageWidget::ULLMDialogueMessageWidget(const FObjectInitializer& ObjectInitializer)
     : Super(ObjectInitializer)
@@ -18,20 +19,20 @@ void ULLMDialogueMessageWidget::NativePreConstruct()
     if (MessageBackground)
     {
         FLinearColor BackgroundColor = bIsNPC ? NPCMessageColor : PlayerMessageColor;
-        MessageBackground->SetColorAndOpacity(BackgroundColor);
+        MessageBackground->SetBrushColor(BackgroundColor);
     }
 }
 
-void ULLMDialogueMessageWidget::SetMessageContent(const FString& SpeakerName, const FString& MessageText)
+void ULLMDialogueMessageWidget::SetMessageContent(const FString& SpeakerName, const FString& Message)
 {
     if (SpeakerNameText)
     {
         SpeakerNameText->SetText(FText::FromString(SpeakerName));
     }
 
-    if (this->MessageText)
+    if (MessageText)
     {
-        this->MessageText->SetText(FText::FromString(MessageText));
+        MessageText->SetText(FText::FromString(Message));
     }
 }
 
@@ -42,6 +43,6 @@ void ULLMDialogueMessageWidget::SetIsNPCMessage(bool bInIsNPC)
     if (MessageBackground)
     {
         FLinearColor BackgroundColor = bIsNPC ? NPCMessageColor : PlayerMessageColor;
-        MessageBackground->SetColorAndOpacity(BackgroundColor);
+        MessageBackground->SetBrushColor(BackgroundColor);
     }
 }
