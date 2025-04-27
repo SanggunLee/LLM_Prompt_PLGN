@@ -1,18 +1,19 @@
 
-# 이제 플러그인 개발이 완료되었습니다. 다음은 사용 방법에 대한 안내입니다:
+# 이제 플러그인 개발이 완료되었습니다. 다음은 사용 방법에 대한 안내입니다:  
 
-  1. 플러그인 컴파일 및 빌드 방법:
-    - 언리얼 에디터를 재시작하면 새 플러그인이 로드됩니다.
-    - 또는 UnrealBuildTool을 사용하여 컴파일할 수 있습니다.
-  2. 블루프린트 위젯 생성 단계:
-    - 각 C++ 위젯 클래스를 상속받는 블루프린트 위젯을 생성합니다.
-    - ULLMDialogueMessageWidget을 상속받는 BP_LLMDialogueMessageWidget 생성
-    - ULLMDialogueInputWidget을 상속받는 BP_LLMDialogueInputWidget 생성
-    - ULLMDialogueWidget을 상속받는 BP_LLMDialogueWidget 생성
-    - 각 위젯의 디자인을 블루프린트 에디터에서 구성합니다.
+  1. 플러그인 컴파일 및 빌드 방법:  
+    - 언리얼 에디터를 재시작하면 새 플러그인이 로드됩니다.  
+    - 또는 UnrealBuildTool을 사용하여 컴파일할 수 있습니다.  
+  2. 블루프린트 위젯 생성 단계:  
+    - 각 C++ 위젯 클래스를 상속받는 블루프린트 위젯을 생성합니다.  
+    - ULLMDialogueMessageWidget을 상속받는 BP_LLMDialogueMessageWidget 생성  
+    - ULLMDialogueInputWidget을 상속받는 BP_LLMDialogueInputWidget 생성 
+    - ULLMDialogueWidget을 상속받는 BP_LLMDialogueWidget 생성  
+    - 각 위젯의 디자인을 블루프린트 에디터에서 구성합니다. 
   3. 게임에서 사용하는 방법:
-  // C++ 코드에서
-  #include "LLMDialogueUIPluginIncludes.h"
+```
+  // C++ 코드에서  
+  #include "LLMDialogueUIPluginIncludes.h"  
 
   // 위젯 생성
   ULLMDialogueWidget* DialogueUI = ULLMDialogueUIPluginLibrary::CreateDialogueUI(
@@ -27,38 +28,41 @@
       DialogueUI->AddToViewport();
       DialogueUI->SetDialogueVisible(true);
   }
+```
 
-  3. 블루프린트에서는:
-    a. Create Dialogue UI 노드 사용
-    b. Add to Viewport 호출
-    c. Set Dialogue Visible(true) 호출
+  3. 블루프린트에서는:  
+    a. Create Dialogue UI 노드 사용  
+    b. Add to Viewport 호출  
+    c. Set Dialogue Visible(true) 호출  
 
-  이 플러그인은 기존 LLMDialoguePlugin을 확장하면서 UI 기능을 추가합니다. 종속성은 Build.cs 파일과 uplugin 파일에 올바르게 설정되었습니다.
+  이 플러그인은 기존 LLMDialoguePlugin을 확장하면서 UI 기능을 추가합니다. 종속성은 Build.cs 파일과 uplugin 파일에 올바르게 설정되었습니다.  
 
- #  > 프로젝트에서 이 플러그인을 사용하려면 LLMDialoguePlugin 플러그인도 프로젝트에 포함 시켜야 하나?
+ ##  > 프로젝트에서 이 플러그인을 사용하려면 LLMDialoguePlugin 플러그인도 프로젝트에 포함 시켜야 하나?  
 
-● 네, 그렇습니다. LLMDialogueUIPlugin은 LLMDialoguePlugin에 의존하기 때문에 프로젝트에서 이 UI 플러그인을 사용하려면 반드시 LLMDialoguePlugin도 함께 포함시켜야 합니다.
+● 네, 그렇습니다. LLMDialogueUIPlugin은 LLMDialoguePlugin에 의존하기 때문에 프로젝트에서 이 UI 플러그인을 사용하려면 반드시 LLMDialoguePlugin도 함께 포함시켜야 합니다.  
 
-  이유는 다음과 같습니다:
+  이유는 다음과 같습니다:  
 
   1. 의존성 설정: LLMDialogueUIPlugin.uplugin 파일에 명시적으로 LLMDialoguePlugin을 의존성으로 선언했습니다.
-  "Plugins": [
+```
+  "Plugins": [  
       {
-          "Name": "LLMDialoguePlugin",
-          "Enabled": true
-      }
+          "Name": "LLMDialoguePlugin",  
+          "Enabled": true  
+      }  
   ]
-  2. 코드 참조: LLMDialogueUIPlugin의 코드가 LLMDialoguePlugin의 클래스들(예: ULLMDialogueComponent)을 직접 참조하고 있습니다.
-  3. 빌드 의존성: LLMDialogueUIPlugin.Build.cs 파일에서 "LLMDialoguePlugin"을 명시적으로 의존성 모듈로 추가했습니다.
+```
 
-  언리얼 엔진에서는 두 플러그인을 모두 활성화해야 하며, 이 플러그인을 다른 프로젝트에서 사용하려면 두 플러그인을 모두 복사하거나 패키징해야 합니다. UI 플러그인이 대화 기능을 제공하는 메인
-  플러그인의 컴포넌트와 통신하는 방식으로 설계되었기 때문입니다.  
+  2. 코드 참조: LLMDialogueUIPlugin의 코드가 LLMDialoguePlugin의 클래스들(예: ULLMDialogueComponent)을 직접 참조하고 있습니다.  
+  3. 빌드 의존성: LLMDialogueUIPlugin.Build.cs 파일에서 "LLMDialoguePlugin"을 명시적으로 의존성 모듈로 추가했습니다.  
 
-#  > 너가 만들어준 플러그인을 사용해서 UI 위젯을 만들어서 npc 케릭터와 대화하는 방법을 설명해줘
+  언리얼 엔진에서는 두 플러그인을 모두 활성화해야 하며, 이 플러그인을 다른 프로젝트에서 사용하려면 두 플러그인을 모두 복사하거나 패키징해야 합니다. UI 플러그인이 대화 기능을 제공하는 메인  플러그인의 컴포넌트와 통신하는 방식으로 설계되었기 때문입니다.  
+ 
+##  > 너가 만들어준 플러그인을 사용해서 UI 위젯을 만들어서 npc 케릭터와 대화하는 방법을 설명해줘  
 
-## LLMDialogueUIPlugin을 사용하여 NPC 캐릭터와 대화하는 방법을 단계별로 설명해 드리겠습니다: 
+### LLMDialogueUIPlugin을 사용하여 NPC 캐릭터와 대화하는 방법을 단계별로 설명해 드리겠습니다:   
 
-###  1. 플러그인 활성화  
+###  1. 플러그인 활성화    
  
   1. 언리얼 에디터를 실행하고 프로젝트를 엽니다.  
   2. Edit > Plugins 메뉴로 이동합니다.  
