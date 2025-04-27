@@ -1,0 +1,30 @@
+{
+    "FileVersion": 3,
+    "Version": 1,
+    "VersionName": "1.0",
+    "FriendlyName": "LLM Dialogue UI Plugin",
+    "Description": "UI 위젯 기능을 제공하는 LLMDialoguePlugin 확장 플러그인",
+    "Category": "UI",
+    "CreatedBy": "Your Company",
+    "CreatedByURL": "",
+    "DocsURL": "",
+    "MarketplaceURL": "",
+    "SupportURL": "",
+    "CanContainContent": true,
+    "IsBetaVersion": false,
+    "IsExperimentalVersion": false,
+    "Installed": false,
+    "Modules": [
+        {
+            "Name": "LLMDialogueUIPlugin",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        }
+    ],
+    "Plugins": [
+        {
+            "Name": "LLMDialoguePlugin",
+            "Enabled": true
+        }
+    ]
+}
